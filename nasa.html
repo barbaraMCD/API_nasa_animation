@@ -7,29 +7,35 @@
     <title>Document</title>
 </head>
 <body>
-  <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label> <br>
-  date de départ format (XXXX XX XX) <input id="datedepart" type="tex"> <br>
-  date de fin (XXXX XX XX)  <input id="datedefin" type="text">
-    <button type="button" value="valider"></button>
+    <div id="question">
+         <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label>
+        <input id="start" type="date"> 
+         <input id="end" type="date"> 
+         <input id="button" type="button" value="valider">
+    </div> 
+    <div id="resultat"></div> 
 </body>
-<script>
-
-const getData = async () => {
-
-const dateStart = document.getElementById("datedepart")
-const dateFin = document.getElementById("datedefin")
-
-const url = "https://api.nasa.gov/neo/rest/v1/feed?start_date="+ dateStart "&end_date=" + datefin "&api_key=h1l0oYA0cbNuoknqZgeM6JrGnXe2MYnuBa0OFPCG"
-
-const response = await fetch(url);
-const data = await response.json();
-
-console.log(data);
-
-resultat.innerHTML = `
-`
+<style>
+body {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: url("Asteroid.jpg");
+  background-size: cover;
 }
-getData()
-
-</script>
+#question {
+  height: 10em;
+  width: 30em;
+  background-color: transparent;
+  color: white;
+  border-radius: 2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 2px 2px 2px rgb(179, 245, 245);
+  gap: 1em;
+}
+</style>
 </html>
