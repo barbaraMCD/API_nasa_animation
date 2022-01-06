@@ -1,32 +1,119 @@
+const button = document.getElementById("button")
+    // const button1 = document.getElementById("button01")
+
+
+
+
 button.addEventListener("click", async() => {
 
-            const body = document.getElementsByTagName("body")[0]
-            const dateStart = document.getElementById("start")
-            const dateFin = document.getElementById("end")
-            const key = "h1l0oYA0cbNuoknqZgeM6JrGnXe2MYnuBa0OFPCG"
+    // const body = document.getElementsByTagName("body")[0]
+    // const dateStart = document.getElementById("start")
+    // const dateFin = document.getElementById("end")
+    // const key = "h1l0oYA0cbNuoknqZgeM6JrGnXe2MYnuBa0OFPCG"
+    //     // GET https: //images-api.nasa.gov
+    //     // GET https://api.nasa.gov/neo/rest/v1/feed?start_date=START_DATE&end_date=END_DATE&api_key=API_KEY
+    //     // const url = `https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart}&end_date=${dateFin}&api_key=${key}`
 
-            const url = `https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart}&end_date=${dateFin}&api_key=${key}`
+    // const url = `https://api.nasa.gov/neo/rest/v1/neo/3542519?api_key=DEMO_KEY`
 
-            const response = await fetch(url);
-            const data = await response.json();
+    const inputmoviID = document.getElementById("movie")
+    const inputtvID = document.getElementById("tv")
+        // const id = 
+    const token = "30797fbce0ac2b192c3301931270ef6d"
+    const urlmovie = `https://api.themoviedb.org/3/movie/${inputmoviID.value}?api_key=${token}`
+    const urltv = `https://api.themoviedb.org/3/tv/${inputtvID.value}?api_key=${token}`
 
-            console.log(data);
+    const body = document.getElementsByTagName("body")[0]
+        // const button = document.getElementById("button01")
+        // const image = document.getElementById("image")
 
-            const Object = document.createElement("a");
-            mapsElem.className = "object";
+    const response = await fetch(urlmovie);
+
+    const data = await response.json();
+
+    console.log(data)
+    const responsetv = await fetch(urltv);
+
+    const datatv = await responsetv.json();
+
+    console.log(datatv)
+
+    const resultats = document.getElementById("resultat");
+    resultats.style.display = "block"
+    const resultatstv = document.getElementById("resultattv");
+    resultatstv.style.display = "block"
+    resultats.innerHTML = `
+    <p><strong>id:</strong> ${data.id}</p>
+      <p><strong>title:</strong> ${data.title}</p>
+       <p><strong>originale title:</strong> ${data.original_title}</p>
+       <p><strong>date de sortie:</strong> ${data.release_date}</p>
+      <p><strong>histoire:</strong> ${data.overview} </p>
+      <p><strong>original_language:</strong> ${data.original_language} </p>
+      <a href="${data.homepage}" > homepage </a >
+      <p><strong>duree de film:</strong> ${data. runtime} min</p>
+      <p><strong>note  de film:</strong> ${data.vote_average} </p>
+      <p><strong>nombre de vote  de film:</strong> ${data.vote_count} </p>
+      <p><strong>status  de film:</strong> ${data.status} </p>
+      <p><strong>popularity de film:</strong> ${data.popularity} </p>
+      <p><strong>tagline de film:</strong> ${data.tagline} </p>
+      <img url="${data.poster_path.jpg}>
+      budget
+      revenue
+
+     `
+    resultatstv.innerHTML = `
+     <p><strong>id:</strong> ${datatv.id}</p>
+       <p><strong>nom :</strong> ${datatv.name}</p>
+        <p><strong>nom originale :</strong> ${datatv.original_name}</p>
+        <p><strong>1ere fois(date) de sortie:</strong> ${datatv.first_air_date}</p>
+        <p><strong>derniere fois(date) de sortie:</strong> ${datatv.last_air_date}</p>
+        <p><strong>nombre de sessions:</strong> ${datatv.number_of_seasons}</p>
+        <p><strong>nombre de episodes:</strong> ${datatv.  number_of_episodes}</p>
+        <p><strong>prochaine episodes a voir:</strong> ${datatv.next_episode_to_air}</p>
+        <p><strong>en production :</strong> ${datatv. in_production}</p>
+       <p><strong>histoire de serie:</strong> ${datatv.overview} </p>
+       <p><strong>original_language:</strong> ${datatv.original_language} </p>
+       <a href="${datatv.homepage}" > homepage </a >
+       <p><strong>note  de serie:</strong> ${datatv.vote_average} </p>
+       <p><strong>nombre de vote de serie:</strong> ${datatv.vote_count} </p>
+       <p><strong>status  de serie:</strong> ${datatv.status} </p>
+       <p><strong>popularity  de serie:</strong> ${datatv.popularity} </p>
+       <p><strong>  tagline  de serie:</strong> ${datatv.tagline} </p>
+       <p><strong> type  de serie:</strong> ${datatv.type} </p>
+      
+       
+       
+ 
+       <img url="${datatv.poster_path.jpg}>
+ 
+      `
 
 
 
 
-            resultats.innerHTML = `
-  
-  <p><strong>Capital:</strong> ${}</p>
-  <p><strong>Continent:</strong> ${}</p>
-  <p><strong>Superficie:</strong> ${}</p>
-  <p><strong>Vents:</strong> ${} km/h</p>
-`
 
 
-        }
 
-        // "element_count":25,"near_earth_objects":{"2015-09-08":[{"links":{"self":"http://www.neowsapp.com/rest/v1/neo/2465633?api_key=DEMO_KEY"},"id":"2465633","neo_reference_id":"2465633","name":"465633 (2009 JR5)","nasa_jpl_url":"http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=2465633","absolute_magnitude_h":20.36,"estimated_diameter":{"kilometers":{"estimated_diameter_min":0.2251930467,"estimated_diameter_max":0.5035469604},"meters":{"estimated_diameter_min":225.1930466786,"estimated_diameter_max":503.5469604336},"miles":{"estimated_diameter_min":0.1399284286,"estimated_diameter_max":0.3128894784},"feet":{"estimated_diameter_min":738.8223552649,"estimated_diameter_max":1652.0570096689}},"is_potentially_hazardous_asteroid":true,"close_approach_data":[{"close_approach_date":"2015-09-08","close_approach_date_full":"2015-Sep-08 20:28","epoch_date_close_approach":1441744080000,"relative_velocity":{"kilometers_per_second":"18.1279547773","kilometers_per_hour":"65260.6371983344","miles_per_hour":"40550.4220413761"},"miss_distance":{"astronomical":"0.3027478814","lunar":"117.7689258646","kilometers":"45290438.204452618","miles":"28142173.3303294084"},"orbiting_body":"Earth"}],"is_sentry_object":false},{"links":{"self":"http://www.neowsapp.com/rest/v1/neo/3426410?api_key=DEMO_KEY"},"id":"3426410","neo_reference_id":"3426410","name":"(2008 QV11)","nasa_jpl_url":"http://ssd.jpl.nasa.gov/sbdb.cgi?sstr=3426410","absolute_magnitude_h":21.34,"estimated_diameter":{"kilometers":{"estimated_diameter_min":0.1434019235,"estimated_diameter_max":0.320656449},"meters":{"estimated_diameter_min":143.4019234645,"estimated_diameter_max":320.6564489709},"miles":{"estimated_diameter_min":0.0891057966,"estimated_diameter_max":0.1992466184},"feet":{"estimated_diameter_min":470.4787665793,"estimated_diameter_max":1052.0225040417}},"is_potentially_hazardous_asteroid":false,"close_approach_data":[{"close_approach_date":"2015-09-08","close_approach_date_full":"2015-Sep-08 14:31","epoch_date_close_approach":1441722660000,"relative_velocity":{"kilometers_per_second":"19.7498128142","kilometers_per_hour":"71099.3261312856","miles_per_hour":"44178.3562841869"},"miss_distance":{"astronomical":"0.2591250701","lunar":"100.7996522689","kilometers":"38764558.550560687","miles":"24087179.7459520006"},"orbiting_body":"Earth"}]
+
+
+    // const response = await fetch(url, );
+    // const data = await response.json();
+
+    // console.log(data);
+
+
+    // mapsElem.className = "object";
+
+
+
+
+    // resultats.innerHTML = `
+
+    //   <p><strong>Capital:</strong> ${}</p>
+    //   <p><strong>Continent:</strong> ${}</p>
+    //   <p><strong>Superficie:</strong> ${}</p>
+    //   <p><strong>Vents:</strong> ${} km/h</p>
+    // `
+
+
+})
