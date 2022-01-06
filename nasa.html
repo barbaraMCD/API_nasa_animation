@@ -9,7 +9,7 @@
 <body>
     <div id="question">
          <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label>
-         <p>Au format AAAA-MM-JJ</p>
+         <p>Au format AAAA-MM-JJ (7 jours min)</p>
         <input id="start" type="text"> 
          <input id="end" type="text"> 
          <input id="button" type="button" value="valider">
@@ -51,7 +51,7 @@ button.addEventListener("click", async() => {
 
   console.log(data);
 
-   ///resultats.innerHTML = `
+///resultats.innerHTML = `
 ////<p><strong>Capital:</strong> ${}</p>
 ///<p><strong>Continent:</strong> ${}</p>
 ///<p><strong>Superficie:</strong> ${}</p>
