@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-
 <body>
     <div id="question">
         <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label>
-        <p>Au format AAAA-MM-JJ (7 jours min)</p>
+        <p>Au format AAAA-MM-JJ (7 jours d'écart max)</p>
         <input id="start" type="text">
         <input id="end" type="text">
         <input id="button" type="button" value="valider">
@@ -98,6 +96,7 @@
     }
 </style>
 <script>
+
     button.addEventListener("click", async() => {
 
     const body = document.getElementsByTagName("body")[0]
@@ -107,17 +106,16 @@
     const img = document.getElementsByTagName("img")[0]
 
     document.querySelector("img").style.WebkitTransitionDuration = "7s"
-    document.querySelector("img").style.WebkitTransform = "rotate(-360deg
-    const response = await fetch(`https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart.value}&end_date=${dateFin.value}&api_key=${key}`);
+    document.querySelector("img").style.WebkitTransform = "rotate(-360deg)"
+
+    const response = await fetch(`https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart}&end_date=${dateFin}&api_key=${key}`);
     const data = await response.json();
 
     console.log(data);
-    const date1 = Date.parse(dateStart.value)
-    const date2 = Date.parse(dateFin.value)
 
     const haz = Math.floor(Math.random() * data.near_earth_objects[dateStart].length)
 
-     question.style.display = "none"
+    question.style.display = "none"
     resultat.style.display = "flex"
 
     resultat.innerHTML = `
@@ -126,12 +124,7 @@
      <p>Diamètre estimé : ${Math.floor(data.near_earth_objects[dateStart][haz].estimated_diameter.meters.estimated_diameter_max)} mètres </p>
         `
      })
-     const timeuser = date2 - date1
-    const day = 1000 * 60 * 60 * 24
 
-
-
-  ///  if (timeuser <= 7 * day) {console.log(timeuser)} else {}})
 </script>
 
 </html>
