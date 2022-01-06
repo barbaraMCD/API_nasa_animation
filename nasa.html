@@ -10,9 +10,6 @@
 
 <body>
     <div id="question">
-
-
-
         <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label>
         <p>Au format AAAA-MM-JJ (7 jours min)</p>
         <input id="start" type="text">
@@ -71,7 +68,7 @@
         position: absolute;
     }
     
-    #chargement>img {
+    #chargement > img {
         height: 6em;
         width: 6em;
         border-radius: 100%;
@@ -103,52 +100,38 @@
 <script>
     button.addEventListener("click", async() => {
 
+    const body = document.getElementsByTagName("body")[0]
+    const dateStart = document.getElementById("start").value
+    const dateFin = document.getElementById("end").value
+    const key = "h1l0oYA0cbNuoknqZgeM6JrGnXe2MYnuBa0OFPCG"
+    const img = document.getElementsByTagName("img")[0]
 
+    document.querySelector("img").style.WebkitTransitionDuration = "7s"
+    document.querySelector("img").style.WebkitTransform = "rotate(-360deg
+    const response = await fetch(`https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart.value}&end_date=${dateFin.value}&api_key=${key}`);
+    const data = await response.json();
 
-        const body = document.getElementsByTagName("body")[0]
-        const dateStart = document.getElementById("start").value
-        const dateFin = document.getElementById("end").value
-        const key = "h1l0oYA0cbNuoknqZgeM6JrGnXe2MYnuBa0OFPCG"
-        const img = document.getElementsByTagName("img")[0]
+    console.log(data);
+    const date1 = Date.parse(dateStart.value)
+    const date2 = Date.parse(dateFin.value)
 
-        document.querySelector("img").style.WebkitTransitionDuration = "7s"
-        document.querySelector("img").style.WebkitTransform = "rotate(-360deg)"
+    const haz = Math.floor(Math.random() * data.near_earth_objects[dateStart].length)
 
+     question.style.display = "none"
+    resultat.style.display = "flex"
 
-        const response = await fetch(`https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart.value}&end_date=${dateFin.value}&api_key=${key}`);
-        const data = await response.json();
-
-        console.log(data);
-        const date1 = Date.parse(dateStart.value)
-        const date2 = Date.parse(dateFin.value)
-
-
-
-        question.style.display = "none"
-        resultat.style.display = "flex"
-        resultat.innerHTML = `
-<p><strong>Name:</strong> ${data.near_earth_objects[dateStart][1].name}</p>
-<p>Magnitude: ${data.near_earth_objects[dateStart][1].absolute_magnitude_h}</p>
-<p>Diamètre estimé : ${data.near_earth_objects[dateStart][1].estimated_diameter.meters.estimated_diameter_max}</p>
-`
-    })
-    const timeuser = date2 - date1
+    resultat.innerHTML = `
+     <p>Name: ${data.near_earth_objects[dateStart][haz].name}</p>
+     <p>Magnitude: ${data.near_earth_objects[dateStart][haz].absolute_magnitude_h}</p>
+     <p>Diamètre estimé : ${Math.floor(data.near_earth_objects[dateStart][haz].estimated_diameter.meters.estimated_diameter_max)} mètres </p>
+        `
+     })
+     const timeuser = date2 - date1
     const day = 1000 * 60 * 60 * 24
 
 
 
-    if (timeuser <= 7 * day) {
-        console.log(timeuser)
-    } else {
-
-
-
-    }
-
-
-
-
-    })
+  ///  if (timeuser <= 7 * day) {console.log(timeuser)} else {}})
 </script>
 
 </html>
