@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="question">
-        <label for="input"> Observation des astéroïdes d'une date fixe à une autre </label>
+        <label> Observation d'un astéroïde d'une date fixe à une autre </label>
         <p>Au format AAAA-MM-JJ (7 jours d'écart max)</p>
         <input id="start" type="text">
         <input id="end" type="text">
@@ -29,7 +29,8 @@
     }
 
     #question {
-        height: 10em;
+        margin-top: 1em;
+        height: 13em;
         width: 30em;
         background-color: transparent;
         color: white;
@@ -43,7 +44,8 @@
     }
 
     #resultat {
-        height: 10em;
+        margin-top: 1em;
+        height: 13em;
         width: 30em;
         background-color: transparent;
         color: white;
@@ -73,27 +75,36 @@
         background-color: transparent;
         transform-origin: -21em -5em;
     }
-
-    #goodandfalse {
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
+    #button {
+        padding: 0.3em 1.5em;
+        font-size: 1em;
+        margin-top: 0.5em;
+        color: #fff;
+        background-color: transparent;
+        border-radius: 10px;
+        border-color: white;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        transition: all 0.3s ease;
     }
 
-    #good {
-        width: 15em;
-        height: 5em;
-        background-color: blue;
-        display: none;
+    #button:hover {
+        transform: translateY(-3px);
     }
 
-    #false {
-        width: 15em;
-        height: 5em;
-        background-color: orange;
-        display: none;
+    #start, #end {
+        padding: 0.4em;
+        margin-top: 0.5em;
+        font-size: 1em;
+        font-weight: bold;
+        color: white;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        outline: none;
     }
+
 </style>
 <script>
 
