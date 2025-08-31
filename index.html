@@ -27,7 +27,7 @@
         background-image: url("Asteroid.jpg");
         background-size: cover;
     }
-    
+
     #question {
         height: 10em;
         width: 30em;
@@ -41,7 +41,7 @@
         box-shadow: 2px 2px 2px rgb(179, 245, 245);
         position: absolute;
     }
-    
+
     #resultat {
         height: 10em;
         width: 30em;
@@ -56,7 +56,7 @@
         display: none;
         position: absolute;
     }
-    
+
     #chargement {
         height: 9em;
         width: 9em;
@@ -65,7 +65,7 @@
         margin-top: 35em;
         position: absolute;
     }
-    
+
     #chargement > img {
         height: 6em;
         width: 6em;
@@ -73,21 +73,21 @@
         background-color: transparent;
         transform-origin: -21em -5em;
     }
-    
+
     #goodandfalse {
         display: flex;
         flex-direction: column;
         align-content: center;
         align-items: center;
     }
-    
+
     #good {
         width: 15em;
         height: 5em;
         background-color: blue;
         display: none;
     }
-    
+
     #false {
         width: 15em;
         height: 5em;
@@ -108,10 +108,8 @@
     document.querySelector("img").style.WebkitTransitionDuration = "7s"
     document.querySelector("img").style.WebkitTransform = "rotate(-360deg)"
 
-    const response = await fetch(`https:api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart}&end_date=${dateFin}&api_key=${key}`);
+    const response = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${dateStart}&end_date=${dateFin}&api_key=${key}`);
     const data = await response.json();
-
-    console.log(data);
 
     const haz = Math.floor(Math.random() * data.near_earth_objects[dateStart].length)
 
